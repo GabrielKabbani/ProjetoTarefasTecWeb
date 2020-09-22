@@ -1,14 +1,15 @@
 package br.edu.insper.mvc.model;
 
 import java.sql.Connection;
-import java.sql.Date;
+
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.sql.Date;
 
 
 public class DAO {
@@ -53,7 +54,26 @@ public class DAO {
 		stmt.execute();
 		stmt.close();
 	}
-	
+	public void remove (Integer id) throws SQLException{
+		PreparedStatement stmt = connection.prepareStatement("DELETE FROM tarefas WHERE id=?");
+		stmt.setLong(1, id);
+		stmt.execute();
+		stmt.close();
+	}
+	public void atualiza (Tarefas tarefa) throws SQLException{
+		PreparedStatement stmt = connection.prepareStatement("UPDATE tarefas SET tarefa=?, prazo=?, nivel=?, criador=? WHERE id=?");
+		stmt.setString(1,tarefa.getTarefa());
+		stmt.setDate(2,(java.sql.Date) tarefa.getData());
+		stmt.setInt(3,Integer.valueOf(tarefa.getNivel()));
+		stmt.setString(4,tarefa.getCriador());
+		stmt.setInt(5, Integer.valueOf(tarefa.getId()));
+		
+		
+		
+		
+		stmt.execute();
+		stmt.close();
+	}
 
 	
 	public void close() throws SQLException {
