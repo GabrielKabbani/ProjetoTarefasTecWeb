@@ -33,7 +33,7 @@ public class DAO {
 			tarefa.setId(rs.getInt("id"));
 			tarefa.setCriador(rs.getString("criador"));
 			tarefa.setNivel(rs.getInt("nivel"));
-			tarefa.setData(rs.getDate("prazo"));
+			tarefa.setPrazo(rs.getDate("prazo"));
 			tarefa.setTarefa(rs.getNString("tarefa"));
 			tarefas.add(tarefa);
 			
@@ -48,7 +48,7 @@ public class DAO {
 		String sql = "INSERT INTO tarefas" + "(tarefa, prazo, nivel, criador) VALUES (?,?,?,?)";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, tarefa.getTarefa());
-		stmt.setDate(2, (Date) tarefa.getData());
+		stmt.setDate(2, (Date) tarefa.getPrazo());
 		stmt.setInt(3, tarefa.getNivel());
 		stmt.setString(4, tarefa.getCriador());
 		stmt.execute();
@@ -63,7 +63,7 @@ public class DAO {
 	public void atualiza (Tarefas tarefa) throws SQLException{
 		PreparedStatement stmt = connection.prepareStatement("UPDATE tarefas SET tarefa=?, prazo=?, nivel=?, criador=? WHERE id=?");
 		stmt.setString(1,tarefa.getTarefa());
-		stmt.setDate(2,(java.sql.Date) tarefa.getData());
+		stmt.setDate(2,(java.sql.Date) tarefa.getPrazo());
 		stmt.setInt(3,Integer.valueOf(tarefa.getNivel()));
 		stmt.setString(4,tarefa.getCriador());
 		stmt.setInt(5, Integer.valueOf(tarefa.getId()));

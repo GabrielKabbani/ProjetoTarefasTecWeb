@@ -50,14 +50,13 @@ public class adiciona extends HttpServlet {
 		try {
 			dao = new DAO();
 			Tarefas tarefa = new Tarefas();
-			tarefa.setId(Integer.valueOf(request.getParameter("id")));
-			tarefa.setCriador(request.getParameter("criador"));
 			tarefa.setNivel(Integer.valueOf(request.getParameter("nivel")));
-			tarefa.setTarefa(request.getParameter("tarefa"));
+			tarefa.setCriador(request.getParameter("criador"));
 			String data = request.getParameter("prazo");
 			java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(data);
 			java.sql.Date prazo= new java.sql.Date(date.getTime());
-			tarefa.setData(prazo);
+			tarefa.setPrazo(prazo);
+			tarefa.setTarefa(request.getParameter("tarefa"));
 			dao.adiciona(tarefa);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -67,7 +66,7 @@ public class adiciona extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/adiciona.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Lista");
 		dispatcher.forward(request, response);
 		
 		

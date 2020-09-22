@@ -7,7 +7,7 @@ public class Tarefas {
 	private Integer nivel;
 	private String criador;
 	private String tarefa;
-	private Date data;
+	private Date prazo;
 	public Integer getId() {
 		return id;
 	}
@@ -32,11 +32,11 @@ public class Tarefas {
 	public void setTarefa(String tarefa) {
 		this.tarefa = tarefa;
 	}
-	public Date getData() {
-		return data;
+	public Date getPrazo() {
+		return prazo;
 	}
-	public void setData(Date data) {
-		this.data = data;
+	public void setPrazo(Date prazo) {
+		this.prazo = prazo;
 	}
 
 }

@@ -10,7 +10,7 @@
 <form action = 'atualiza' method = 'post'>
 Tarefa: <input type = 'text' name='tarefa' value='${param.tarefa}'><br>
 Nível: <input type = 'number' name='nivel' value='${param.nivel}'><br>
-Prazo: <input type = 'date' name='prazo' value='${param.data}'><br>
+Prazo: <input type = 'text' name='prazo' value='${param.prazo}'><br>
 Criador: <input type = 'text' name='criador' value='${param.criador}'><br>
 <input type= 'hidden' name='id' value='${param.id}'>
 <input type= 'submit' value='atualizar'>

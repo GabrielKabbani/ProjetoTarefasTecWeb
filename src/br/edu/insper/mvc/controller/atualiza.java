@@ -56,7 +56,10 @@ public class atualiza extends HttpServlet {
 			String data = request.getParameter("prazo");
 			java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(data);
 			java.sql.Date prazo= new java.sql.Date(date.getTime());
-			tarefa.setData(prazo);
+			tarefa.setPrazo(prazo);
+			tarefa.setTarefa(request.getParameter("tarefa"));
+			tarefa.setId(Integer.valueOf(request.getParameter("id")));
+			
 			dao.atualiza(tarefa);
 		} catch (ClassNotFoundException | SQLException e1) {
 			// TODO Auto-generated catch block
@@ -67,7 +70,7 @@ public class atualiza extends HttpServlet {
 		}
 
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/atualiza.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Lista");
 		dispatcher.forward(request, response);
 		
 	}

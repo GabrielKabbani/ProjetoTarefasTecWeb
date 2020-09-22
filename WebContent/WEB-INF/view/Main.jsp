@@ -20,7 +20,7 @@
 	<td><b>tarefa</b></td>
 	<td><b>nivel</b></td>
 	<td><b>criador</b></td>
-	<td><b>data</b></td>
+	<td><b>prazo</b></td>
 </tr>
 
 <c:forEach var="tarefa" items="${dao.lista}" varStatus="id"> 
@@ -29,7 +29,7 @@
 	<td>${tarefa.tarefa}</td>
 	<td>${tarefa.nivel}</td>
 	<td>${tarefa.criador}</td>
-	<td>${tarefa.data}</td>
+	<td>${tarefa.prazo}</td>
 	<td>
 	<form action='remove' method='post'>
 	<input type='hidden' name='id' value='${tarefa.id}'>
@@ -38,7 +38,7 @@
 	<form action='atualiza' method='get'>
 	<input type='hidden' name='id' value='${tarefa.id}'>
 	<input type='hidden' name='tarefa' value='${tarefa.tarefa}'>
-	<input type='hidden' name='prazo' value='${tarefa.data}'>
+	<input type='hidden' name='prazo' value='${tarefa.prazo}'>
 	<input type='hidden' name='nivel' value='${tarefa.nivel}'>
 	<input type='hidden' name='criador' value='${tarefa.criador}'>
 	<input type='submit' value='atualizar'>
@@ -52,7 +52,7 @@
 <form action='adiciona' method='get'>
 	<input type='hidden' name='id' value='${tarefa.id}'>
 	<input type='hidden' name='tarefa' value='${tarefa.tarefa}'>
-	<input type='hidden' name='prazo' value='${tarefa.data}'>
+	<input type='hidden' name='prazo' value='${tarefa.prazo}'>
 	<input type='hidden' name='nivel' value='${tarefa.nivel}'>
 	<input type='hidden' name='criador' value='${tarefa.criador}'>
 	<input type='submit' value='adicionar'>
