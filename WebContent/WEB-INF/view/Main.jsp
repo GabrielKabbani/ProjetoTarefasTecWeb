@@ -54,7 +54,7 @@
 	<input type='hidden' name='tarefa' value='${tarefa.tarefa}'>
 	<input type='hidden' name='prazo' value='${tarefa.prazo}'>
 	<input type='hidden' name='nivel' value='${tarefa.nivel}'>
-	<input type='hidden' name='criador' value='${tarefa.criador}'>
+	<input type='hidden' name='usuario' value='${param.usuario}'>
 	<input type='submit' value='adicionar'>
 </form>
 

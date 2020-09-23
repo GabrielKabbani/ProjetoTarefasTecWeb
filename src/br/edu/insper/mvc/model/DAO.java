@@ -44,6 +44,34 @@ public class DAO {
 		return tarefas;
 	}
 	
+	public List<Usuarios> getUsuarios() throws SQLException {
+		
+		List<Usuarios> usuarios = new ArrayList<Usuarios>();
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM login");
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			
+			Usuarios usuario = new Usuarios();
+			usuario.setUsuario(rs.getString("usuario"));
+			usuario.setSenha(rs.getString("senha"));
+			usuarios.add(usuario);
+			
+		}
+		
+		rs.close();
+		stmt.close();
+		return usuarios;
+	}
+	public void adicionaUsuario (Usuarios usuario) throws SQLException {
+		String sql = "INSERT INTO login" + "(usuario, senha) VALUES (?,?)";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, usuario.getUsuario());
+		stmt.setString(2, usuario.getSenha());
+		stmt.execute();
+		stmt.close();
+	}
+
 	public void adiciona (Tarefas tarefa) throws SQLException {
 		String sql = "INSERT INTO tarefas" + "(tarefa, prazo, nivel, criador) VALUES (?,?,?,?)";
 		PreparedStatement stmt = connection.prepareStatement(sql);
