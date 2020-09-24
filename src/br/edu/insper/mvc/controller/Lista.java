@@ -51,7 +51,13 @@ public class Lista extends HttpServlet {
 			dao = new DAO();
 			String imp = request.getParameter("imp");
 			String dat = request.getParameter("dat");
-			if (imp.contentEquals("imp_asc")) {
+			String query = request.getParameter("query");
+			String categoria = request.getParameter("categoria");
+			System.out.println(categoria);
+			if(query!=null) {
+				tarefas=dao.getQuery("%"+query+"%",categoria);
+			}
+			else if (imp.contentEquals("imp_asc")) {
 				tarefas = dao.getListaImpAsc();
 			}
 			else if (imp.contentEquals("imp_desc")) {

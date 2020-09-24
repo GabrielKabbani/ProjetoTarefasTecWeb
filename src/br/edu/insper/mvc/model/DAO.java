@@ -1,5 +1,6 @@
 package br.edu.insper.mvc.model;
 
+import java.io.Reader;
 import java.sql.Connection;
 
 
@@ -43,6 +44,69 @@ public class DAO {
 		stmt.close();
 		return tarefas;
 	}
+	public List<Tarefas> getQuery(String query, String categoria) throws SQLException {
+		
+		List<Tarefas> tarefas = new ArrayList<Tarefas>();
+		if (query == null) {
+			String string = "SELECT * FROM tarefas";
+			PreparedStatement stmt = connection.prepareStatement(string);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				
+				Tarefas tarefa = new Tarefas();
+				tarefa.setId(rs.getInt("id"));
+				tarefa.setCriador(rs.getString("criador"));
+				tarefa.setNivel(rs.getInt("nivel"));
+				tarefa.setPrazo(rs.getDate("prazo"));
+				tarefa.setTarefa(rs.getNString("tarefa"));
+				tarefas.add(tarefa);
+				
+			}
+			
+			rs.close();
+			stmt.close();
+			return tarefas;
+		}
+		else {
+			String string = null;
+			if (categoria.contentEquals("prazo")) {
+				string="SELECT * FROM tarefas WHERE prazo LIKE ?";
+			}
+			else if (categoria.contentEquals("tarefa")) {
+				string="SELECT * FROM tarefas WHERE tarefa LIKE ?";
+			}
+			else if (categoria.contentEquals("criador")) {
+				string="SELECT * FROM tarefas WHERE criador LIKE ?";
+			}
+			else if (categoria.contentEquals("nivel")) {
+				string="SELECT * FROM tarefas WHERE nivel LIKE ?";
+			}
+			PreparedStatement stmt = connection.prepareStatement(string);
+			stmt.setNString(1, query);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				
+				Tarefas tarefa = new Tarefas();
+				tarefa.setId(rs.getInt("id"));
+				tarefa.setCriador(rs.getString("criador"));
+				tarefa.setNivel(rs.getInt("nivel"));
+				tarefa.setPrazo(rs.getDate("prazo"));
+				tarefa.setTarefa(rs.getNString("tarefa"));
+				tarefas.add(tarefa);
+				
+			}
+			
+			rs.close();
+			stmt.close();
+			return tarefas;
+		}
+		
+		
+		
+		
+		
+	}
+	
 	public List<Tarefas> getListaImpAsc() throws SQLException {
 		
 		List<Tarefas> tarefas = new ArrayList<Tarefas>();

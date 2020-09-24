@@ -14,6 +14,17 @@
 <body>
 <jsp:useBean id="dao" class="br.edu.insper.mvc.model.DAO"/>
 <form action='Lista'>
+<label for="cars">Qual categoria você deseja buscar?:</label>
+  <select name="categoria">
+    <option value="tarefa">Nome da tarefa</option>
+    <option value="prazo">Prazo</option>
+    <option value="criador">Criador</option>
+    <option value="nivel">Nível de importância</option>
+  </select>
+O que você deseja buscar?: <input type='text' name='query'>
+<input type='submit' value='buscar'> 
+</form>
+<form action='Lista'>
 <input type='hidden' name='imp' value='imp_asc'>
 <input type='hidden' name='dat' value='normal'>
 <input type='submit' value='Ordenar por nível de importância crescente'>
