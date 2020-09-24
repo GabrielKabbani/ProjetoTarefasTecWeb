@@ -43,6 +43,50 @@ public class DAO {
 		stmt.close();
 		return tarefas;
 	}
+	public List<Tarefas> getListaImpAsc() throws SQLException {
+		
+		List<Tarefas> tarefas = new ArrayList<Tarefas>();
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM tarefas ORDER BY nivel ASC");
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			
+			Tarefas tarefa = new Tarefas();
+			tarefa.setId(rs.getInt("id"));
+			tarefa.setCriador(rs.getString("criador"));
+			tarefa.setNivel(rs.getInt("nivel"));
+			tarefa.setPrazo(rs.getDate("prazo"));
+			tarefa.setTarefa(rs.getNString("tarefa"));
+			tarefas.add(tarefa);
+			
+		}
+		
+		rs.close();
+		stmt.close();
+		return tarefas;
+	}
+	public List<Tarefas> getListaImpDesc() throws SQLException {
+		
+		List<Tarefas> tarefas = new ArrayList<Tarefas>();
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM tarefas ORDER BY nivel DESC");
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			
+			Tarefas tarefa = new Tarefas();
+			tarefa.setId(rs.getInt("id"));
+			tarefa.setCriador(rs.getString("criador"));
+			tarefa.setNivel(rs.getInt("nivel"));
+			tarefa.setPrazo(rs.getDate("prazo"));
+			tarefa.setTarefa(rs.getNString("tarefa"));
+			tarefas.add(tarefa);
+			
+		}
+		
+		rs.close();
+		stmt.close();
+		return tarefas;
+	}
 	
 	public List<Usuarios> getUsuarios() throws SQLException {
 		

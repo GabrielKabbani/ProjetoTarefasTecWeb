@@ -46,9 +46,20 @@ public class Lista extends HttpServlet {
 	}
 	protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAO dao;
+		List<Tarefas> tarefas = null;
 		try {
 			dao = new DAO();
-			List<Tarefas> tarefas = dao.getLista();
+			String tipo = request.getParameter("imp");
+			if (tipo != null && tipo.contentEquals("imp_asc")) {
+				tarefas = dao.getListaImpAsc();
+				request.setAttribute("entrou", "sim");//TIRAR ISSO DEPOIS
+			}
+			else if (tipo != null && tipo.contentEquals("imp_desc")) {
+				tarefas = dao.getListaImpDesc();
+			}
+			else {
+				tarefas = dao.getLista();
+			}
 			request.setAttribute("tarefas", tarefas);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/Main.jsp");
 			dispatcher.forward(request,response);

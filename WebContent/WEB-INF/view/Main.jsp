@@ -13,14 +13,21 @@
 </head>
 <body>
 <jsp:useBean id="dao" class="br.edu.insper.mvc.model.DAO"/>
-
+<form action='Lista'>
+<input type='hidden' name='imp' value='imp_asc'>
+<input type='submit' value='Ordenar por nível de importância crescente'>
+</form>
+<form action='Lista'>
+<input type='hidden' name='imp' value='imp_desc'>
+<input type='submit' value='Ordenar por nível de importância decrescente'>
+</form>
 <table border='1'>
 <tr>
 	<td><b>#</b></td>
-	<td><b>tarefa</b></td>
-	<td><b>nivel</b></td>
-	<td><b>criador</b></td>
-	<td><b>prazo</b></td>
+	<td><b>Tarefa</b></td>
+	<td><b>Nível</b></td>
+	<td><b>Criador</b></td>
+	<td><b>Prazo</b></td>
 </tr>
 
 <c:forEach var="tarefa" items="${dao.lista}" varStatus="id"> 
@@ -56,6 +63,10 @@
 	<input type='hidden' name='nivel' value='${tarefa.nivel}'>
 	<input type='hidden' name='usuario' value='${param.usuario}'>
 	<input type='submit' value='adicionar'>
+</form>
+
+<form action='usuarios' method='get'>
+<input type='submit' value='logout'>
 </form>
 
 </body>

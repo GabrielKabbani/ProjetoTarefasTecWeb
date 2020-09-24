@@ -14,5 +14,10 @@ Prazo: <input type = 'date' name='prazo'><br>
 <input type='hidden' name='criador' value='${param.usuario}'>
 <input type='submit' value='adicionar'><br>
 </form>
+
+<form action = 'Lista'>
+<input type='submit' value = 'voltar'>
+</form>
+
 </body>
 </html>
