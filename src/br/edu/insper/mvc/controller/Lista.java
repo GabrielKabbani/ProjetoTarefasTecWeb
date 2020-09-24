@@ -49,13 +49,19 @@ public class Lista extends HttpServlet {
 		List<Tarefas> tarefas = null;
 		try {
 			dao = new DAO();
-			String tipo = request.getParameter("imp");
-			if (tipo != null && tipo.contentEquals("imp_asc")) {
+			String imp = request.getParameter("imp");
+			String dat = request.getParameter("dat");
+			if (imp.contentEquals("imp_asc")) {
 				tarefas = dao.getListaImpAsc();
-				request.setAttribute("entrou", "sim");//TIRAR ISSO DEPOIS
 			}
-			else if (tipo != null && tipo.contentEquals("imp_desc")) {
+			else if (imp.contentEquals("imp_desc")) {
 				tarefas = dao.getListaImpDesc();
+			}
+			else if (dat.contentEquals("dat_asc")) {
+				tarefas = dao.getListaDatAsc();
+			}
+			else if (dat.contentEquals("dat_desc")) {
+				tarefas = dao.getListaDatDesc();
 			}
 			else {
 				tarefas = dao.getLista();

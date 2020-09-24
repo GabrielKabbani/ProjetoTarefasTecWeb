@@ -14,6 +14,8 @@
 <form action= 'usuarios' method = 'post'>
 Usuário: <input type = 'text' name='usuario'><br>
 Senha: <input type = 'text' name='senha'><br>
+<input type='hidden' name='imp' value='normal'>
+<input type='hidden' name='dat' value='normal'>
 <input type='submit' value='Entrar'><br>
 </form>
 <form action= 'newUser' method = 'get'>
