@@ -2,7 +2,7 @@
 package br.edu.insper.mvc.controller;
 
 import java.io.IOException;
-import java.sql.Date;
+
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,6 +48,7 @@ public class atualiza extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		DAO dao=null;
+		String usuario = request.getParameter("usuario");
 		try {
 			dao = new DAO();
 			Tarefas tarefa = new Tarefas();
@@ -69,7 +70,7 @@ public class atualiza extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		
+		request.setAttribute("usuario", usuario);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Lista");
 		dispatcher.forward(request, response);
 		

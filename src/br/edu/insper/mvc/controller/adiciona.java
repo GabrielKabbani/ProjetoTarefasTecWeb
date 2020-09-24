@@ -47,6 +47,7 @@ public class adiciona extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		DAO dao = null;
+		String usuario = request.getParameter("criador");
 		try {
 			dao = new DAO();
 			Tarefas tarefa = new Tarefas();
@@ -65,7 +66,7 @@ public class adiciona extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		request.setAttribute("usuario", usuario);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Lista");
 		dispatcher.forward(request, response);
 		

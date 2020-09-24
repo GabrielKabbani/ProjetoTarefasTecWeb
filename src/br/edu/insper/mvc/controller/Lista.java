@@ -49,28 +49,32 @@ public class Lista extends HttpServlet {
 		List<Tarefas> tarefas = null;
 		try {
 			dao = new DAO();
+			String usuario = (String) request.getAttribute("usuario");
+			System.out.println("ATRIBUTO NA LISTA"+usuario);
+			System.out.println("PARAM NA LISTA"+request.getParameter("usuario"));
 			String imp = request.getParameter("imp");
 			String dat = request.getParameter("dat");
 			String query = request.getParameter("query");
 			String categoria = request.getParameter("categoria");
-			System.out.println(categoria);
+			
+
 			if(query!=null) {
-				tarefas=dao.getQuery("%"+query+"%",categoria);
+				tarefas=dao.getQuery("%"+query+"%",categoria,request.getParameter("usuario"));
 			}
-			else if (imp.contentEquals("imp_asc")) {
-				tarefas = dao.getListaImpAsc();
+			else if (imp!= null && imp.contentEquals("imp_asc")) {
+				tarefas = dao.getListaImpAsc(request.getParameter("usuario"));
 			}
-			else if (imp.contentEquals("imp_desc")) {
-				tarefas = dao.getListaImpDesc();
+			else if (imp!= null && imp.contentEquals("imp_desc")) {
+				tarefas = dao.getListaImpDesc(request.getParameter("usuario"));
 			}
-			else if (dat.contentEquals("dat_asc")) {
-				tarefas = dao.getListaDatAsc();
+			else if (dat!= null && dat.contentEquals("dat_asc")) {
+				tarefas = dao.getListaDatAsc(request.getParameter("usuario"));
 			}
-			else if (dat.contentEquals("dat_desc")) {
-				tarefas = dao.getListaDatDesc();
+			else if (dat!= null && dat.contentEquals("dat_desc")) {
+				tarefas = dao.getListaDatDesc(request.getParameter("usuario"));
 			}
 			else {
-				tarefas = dao.getLista();
+				tarefas = dao.getLista(usuario);
 			}
 			request.setAttribute("tarefas", tarefas);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/Main.jsp");

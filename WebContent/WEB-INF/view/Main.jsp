@@ -18,30 +18,34 @@
   <select name="categoria">
     <option value="tarefa">Nome da tarefa</option>
     <option value="prazo">Prazo</option>
-    <option value="criador">Criador</option>
     <option value="nivel">Nível de importância</option>
   </select>
 O que você deseja buscar?: <input type='text' name='query'>
+<input type='hidden' name='usuario' value='${param.usuario}'>
 <input type='submit' value='buscar'> 
 </form>
 <form action='Lista'>
 <input type='hidden' name='imp' value='imp_asc'>
 <input type='hidden' name='dat' value='normal'>
+<input type='hidden' name='usuario' value='${param.usuario}'>
 <input type='submit' value='Ordenar por nível de importância crescente'>
 </form>
 <form action='Lista'>
 <input type='hidden' name='imp' value='imp_desc'>
 <input type='hidden' name='dat' value='normal'>
+<input type='hidden' name='usuario' value='${param.usuario}'>
 <input type='submit' value='Ordenar por nível de importância decrescente'>
 </form>
 <form action='Lista'>
 <input type='hidden' name='dat' value='dat_asc'>
 <input type='hidden' name='imp' value='normal'>
+<input type='hidden' name='usuario' value='${param.usuario}'>
 <input type='submit' value='Ordenar por nível de data crescente'>
 </form>
 <form action='Lista'>
 <input type='hidden' name='dat' value='dat_desc'>
 <input type='hidden' name='imp' value='normal'>
+<input type='hidden' name='usuario' value='${param.usuario}'>
 <input type='submit' value='Ordenar por nível de data decrescente'>
 </form>
 <table border='1'>
@@ -63,6 +67,7 @@ O que você deseja buscar?: <input type='text' name='query'>
 	<td>
 	<form action='remove' method='post'>
 	<input type='hidden' name='id' value='${tarefa.id}'>
+	<input type='hidden' name='usuario' value='${param.usuario}'>
 	<input type='submit' value='remover'>
 	</form>
 	<form action='atualiza' method='get'>
@@ -71,6 +76,7 @@ O que você deseja buscar?: <input type='text' name='query'>
 	<input type='hidden' name='prazo' value='${tarefa.prazo}'>
 	<input type='hidden' name='nivel' value='${tarefa.nivel}'>
 	<input type='hidden' name='criador' value='${tarefa.criador}'>
+	<input type='hidden' name='usuario' value='${param.usuario}'>
 	<input type='submit' value='atualizar'>
 	</form>
 	</td>

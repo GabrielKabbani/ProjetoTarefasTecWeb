@@ -2,20 +2,15 @@ package br.edu.insper.mvc.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import br.edu.insper.mvc.model.DAO;
-import br.edu.insper.mvc.model.Tarefas;
 import br.edu.insper.mvc.model.Usuarios;
 
 /**
@@ -51,7 +46,6 @@ public class usuarios extends HttpServlet {
 		List<Usuarios> usuarios = new ArrayList<Usuarios>();
 		try {
 			dao = new DAO();
-			Usuarios usuario = new Usuarios();
 			String usuario_iq=request.getParameter("usuario");
 			String senha_iq=request.getParameter("senha");
 			usuarios=dao.getUsuarios();

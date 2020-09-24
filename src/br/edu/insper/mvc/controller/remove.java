@@ -41,6 +41,7 @@ public class remove extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		DAO dao = null;
+		String usuario = request.getParameter("usuario");
 		try {
 			dao = new DAO();
 			dao.remove(Integer.valueOf(request.getParameter("id")));
@@ -48,7 +49,7 @@ public class remove extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+		request.setAttribute("usuario", usuario);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Lista");
 		dispatcher.forward(request, response);
 	}
