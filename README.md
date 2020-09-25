@@ -1,5 +1,5 @@
 # ProjetoTarefasTecWeb
-CRUD de tarefas
+CRUD de tarefas - Feito por Gabriel Kabbani
 
 SCRIPT MYSQL:
 
